@@ -1,0 +1,7 @@
+.item {
+    color: red;
+}
+
+.card-title {
+    text-transform: capitalize;
+}

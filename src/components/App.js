@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import PizzaList from './pizza-list/pizza-list';
 
 function App() {
   return (
-    <div className="App">
-      APP
+    <div className="container">
+      <PizzaList />
     </div>
   );
 }
