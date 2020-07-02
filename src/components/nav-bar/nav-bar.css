@@ -1,0 +1,11 @@
+.navbar {
+    background-color: #1976d2 !important;
+}
+
+button, a {
+    color: #fff !important;
+}
+
+.btn-auth{
+    margin-left: 20px;
+}

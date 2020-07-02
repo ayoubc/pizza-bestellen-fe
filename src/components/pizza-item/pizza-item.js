@@ -7,9 +7,12 @@ const PizzaItem = ({ item }) => {
       <div className="card" >
         <img className="card-img-top" src="./assets/images/pizza_de_lado.jpg" alt="pizza" />
         <div className="card-body">
-          <h5 className="card-title">{item.name}</h5>
+          <h5 className="card-title">
+            <span>{item.name}</span>  
+            <span className="price">{item.price} &euro;</span>  
+          </h5>
           <p className="card-text">{item.discription}</p>
-          <button className="btn btn-primary"> Order</button>
+          <button className="btn btn-primary"> Add to cart</button>
         </div>
       </div>
     </div>
