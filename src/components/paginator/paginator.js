@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './paginator.css';
-import {nextPage, prevPage} from '../../actions';
+import { nextPage, prevPage } from '../../actions';
 import { connect } from 'react-redux';
 
 
-const Paginator = ({nextPage, prevPage, max}) => {
-    // console.log(nextPage);
+const Paginator = ({ nextPage, prevPage, max }) => {
     const [count, setCount] = useState(1);
     const [prevClass, setPrevClass] = useState('disabled');
     const [nextClass, setNextClass] = useState('');
@@ -23,9 +22,7 @@ const Paginator = ({nextPage, prevPage, max}) => {
         if (count > 1) {
             setPrevClass('');
         }
-        // console.log('count changed');
     }, [count]);
-
 
     const increament = () => {
         if (count < max) {
@@ -47,11 +44,9 @@ const Paginator = ({nextPage, prevPage, max}) => {
                 <li className={`page-item ${prevClass}`} onClick={decreament}>
                     <span className="page-link">Previous</span>
                 </li>
-                {/* <li className="page-item"><span className="page-link">1</span></li> */}
                 <li className="page-item active">
-                    <span className="page-link">{count}</span>
+                    <span className="page-link">{count} / {max}</span>
                 </li>
-                {/* <li className="page-item"><span className="page-link">3</span></li> */}
                 <li className={`page-item ${nextClass}`} onClick={increament}>
                     <span className="page-link">Next</span>
                 </li>
@@ -62,5 +57,5 @@ const Paginator = ({nextPage, prevPage, max}) => {
 
 export default connect(
     null,
-    {nextPage, prevPage}
+    { nextPage, prevPage }
 )(Paginator);

@@ -4,9 +4,13 @@
 
 .card-title {
     text-transform: capitalize;
+    margin-bottom: 0.5rem !important;
+    font-size: 1rem !important;
 }
 .card-text {
     font-style: italic !important;
+    font-size: 15px !important;
+    margin-bottom: .5rem !important;
 }
 .price {
     float: right;

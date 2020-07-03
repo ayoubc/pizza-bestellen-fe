@@ -4,9 +4,10 @@ import PizzaItem from '../pizza-item/pizza-item';
 import axios from "../../services";
 import Paginator from '../paginator/paginator';
 import { connect } from 'react-redux';
+import { loading } from '../../actions';
 
 const MAX_ITEMS = 8;
-const PizzaList = ({ page }) => {
+const PizzaList = ({ page, loading }) => {
     const [pizzaList, setPizzaList] = useState([]);
     const [numPages, setNumPages] = useState(1);
     const lowIndex = (page - 1) * MAX_ITEMS;
@@ -15,12 +16,13 @@ const PizzaList = ({ page }) => {
 
 
     useEffect(() => {
+        loading(true);
         axios.get('/pizzas').then(response => {
             setPizzaList(response.data.items);
             let n = response.data.items.length;
-            console.log(Math.floor((n + MAX_ITEMS - 1) / MAX_ITEMS))
             setNumPages(Math.floor((n + MAX_ITEMS - 1) / MAX_ITEMS));
-        })
+            loading(false);
+        });
     }, [])
 
     return (
@@ -31,19 +33,18 @@ const PizzaList = ({ page }) => {
                 })}
 
             </div>
-            <div className="paginator">
+            {pizzaList.length > 0 && <div className="paginator">
                 <Paginator max={numPages} />
-            </div>
+            </div>}
         </div>
     );
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return state;
 }
 
 export default connect(
     mapStateToProps,
-    null
+    { loading }
 )(PizzaList);

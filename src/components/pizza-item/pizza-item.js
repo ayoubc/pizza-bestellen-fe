@@ -1,7 +1,9 @@
 import React from 'react';
 import './pizza-item.css';
+import { connect } from 'react-redux';
+import {addPizza} from '../../actions';
 
-const PizzaItem = ({ item }) => {
+const PizzaItem = ({ item, addPizza }) => {
   return (
     <div className="col-md-3 col-sm-12">
       <div className="card" >
@@ -12,11 +14,14 @@ const PizzaItem = ({ item }) => {
             <span className="price">{item.price} &euro;</span>  
           </h5>
           <p className="card-text">{item.discription}</p>
-          <button className="btn btn-primary"> Add to cart</button>
+          <button className="btn btn-primary" onClick={() => addPizza(item)}> Add to cart</button>
         </div>
       </div>
     </div>
   );
 }
 
-export default PizzaItem;
+export default connect(
+  null, 
+  {addPizza}
+)(PizzaItem);

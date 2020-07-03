@@ -1,4 +1,4 @@
-import { combineReducers, compose } from 'redux';
+import { combineReducers } from 'redux';
 
 
 const paginationReducer = (page = 1, action) => {
@@ -14,6 +14,32 @@ const paginationReducer = (page = 1, action) => {
     }
 }
 
+const loadingReducer = (open = false, action) => {
+    switch(action.type) {
+        case 'LOADING':
+            return action.payload;
+
+        default:
+            return open;
+    }
+}
+
+const cartReducer = (cart = [], action) => {
+    switch(action.type) {
+        case 'ADD_PIZZA':
+            return [...cart, action.payload];
+
+        case 'REMOVE_PIZZA':
+            // we will implement it after
+            return cart;
+
+        default:
+            return cart;
+    }
+}
+
 export default combineReducers({
-    page: paginationReducer
+    page: paginationReducer,
+    cart: cartReducer,
+    loading: loadingReducer
 });
