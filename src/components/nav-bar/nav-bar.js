@@ -2,18 +2,20 @@ import React from 'react';
 import "./nav-bar.css";
 import Cart from '../cart/cart';
 import { connect } from 'react-redux';
+import {Link } from 'react-router-dom';
 
 
 const NavBar = ({ cart }) => {
+    
     return (
         <div className="nav-container">
             <nav className="navbar navbar-light">
                 <div>
-                    <a href="#" className="navbar-brand">Home</a>
+                    <Link to={'/menu'} className="navbar-brand"> Home </Link>
                 </div>
                 <div>
                     <button className="btn btn-outline-success btn-auth">LogIn</button>
-                    <Cart number={cart.length} />
+                    <Link to={'/orders'}><Cart number={cart.length} /></Link>
                 </div>
             </nav>
         </div>
@@ -21,7 +23,7 @@ const NavBar = ({ cart }) => {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state);
+    // console.log(state.cart);
     return state;
 }
 export default connect(

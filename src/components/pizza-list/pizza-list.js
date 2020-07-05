@@ -26,16 +26,18 @@ const PizzaList = ({ page, loading }) => {
     }, [])
 
     return (
-        <div className="items">
-            <div className="row">
-                {pizzaList.slice(lowIndex, HighIndex).map((item, index) => {
-                    return <PizzaItem key={index} item={item} />
-                })}
+        <div className="container">
+            <div className="items">
+                <div className="row">
+                    {pizzaList.slice(lowIndex, HighIndex).map((item) => {
+                        return <PizzaItem key={item.id} item={item} />
+                    })}
 
+                </div>
+                {pizzaList.length > 0 && <div className="paginator">
+                    <Paginator max={numPages} />
+                </div>}
             </div>
-            {pizzaList.length > 0 && <div className="paginator">
-                <Paginator max={numPages} />
-            </div>}
         </div>
     );
 }

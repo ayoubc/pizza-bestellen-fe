@@ -24,3 +24,8 @@ button {
 .card-body{
     padding: 10px !important;
 }
+
+.quantity-counter {
+    display: flex;
+    justify-content: center;
+}

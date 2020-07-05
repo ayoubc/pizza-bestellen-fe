@@ -1,0 +1,21 @@
+.pizza-img {
+    width: 150px;
+}
+
+.display-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+.item-order {
+    margin: 0 !important;
+    padding: 20px 0;
+    /* margin-bottom: 10px; */
+    border-bottom: 1px solid #e8e8e8;
+    position: relative;
+    cursor: pointer;
+}
+.border-right {
+    border-right: 1px solid #e8e8e8;
+}

@@ -1,0 +1,21 @@
+.add-remove-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px black solid;
+    cursor: pointer;
+    /* text-align: center; */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.add-remove-btn > img {
+    width: 100%;
+}
+
+.count-text {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 5px;
+    color: #e82a6b;
+}

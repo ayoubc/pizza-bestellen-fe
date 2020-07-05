@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-
+import { actions, findById } from '../utils';
 
 const paginationReducer = (page = 1, action) => {
     switch(action.type) {
-        case 'NEXT_PAGE':
+        case actions.NEXT_PAGE:
             return action.payload;
 
-        case 'PREV_PAGE':
+        case actions.PREV_PAGE:
             return action.payload;
 
         default:
@@ -16,7 +16,7 @@ const paginationReducer = (page = 1, action) => {
 
 const loadingReducer = (open = false, action) => {
     switch(action.type) {
-        case 'LOADING':
+        case actions.LOADING:
             return action.payload;
 
         default:
@@ -25,13 +25,28 @@ const loadingReducer = (open = false, action) => {
 }
 
 const cartReducer = (cart = [], action) => {
+    const index = findById(cart, action.payload);
     switch(action.type) {
-        case 'ADD_PIZZA':
-            return [...cart, action.payload];
+        case actions.ADD_PIZZA:
+            if (index === -1) {
+                return [...cart, action.payload];
+            }
+            else{
+                cart[index] = action.payload;
+                return [...cart];
+            }
 
-        case 'REMOVE_PIZZA':
-            // we will implement it after
-            return cart;
+        case actions.REMOVE_PIZZA:
+            if (index === -1) {
+                return cart;
+            }
+            else {
+                cart[index].quantity--;
+                if (cart[index].quantity === 0) {
+                    return [...cart.slice(0, index).concat(cart.slice(index+1))];
+                }
+                return [...cart];
+            }
 
         default:
             return cart;

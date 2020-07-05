@@ -1,0 +1,35 @@
+.empty-cart {
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.empty-cart-text {
+    font-size: 25px;
+}
+
+.list-container {
+    background: #fff;
+    padding: 25px;
+    margin: 25px 0 0;
+    border-radius: 8px;
+    box-shadow: -5px 10px 60px -13px rgba(0,0,0,.2);
+}
+
+.display-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+.menu {
+    margin-top: 10px;
+}
+.total-price {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}

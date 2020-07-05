@@ -1,3 +1,7 @@
 .MuiButtonBase-root.MuiIconButton-root {
     outline: unset;
 }
+
+.cart-container {
+    display: inline-block;
+}

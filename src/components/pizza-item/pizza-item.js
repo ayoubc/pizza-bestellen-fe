@@ -1,27 +1,27 @@
 import React from 'react';
 import './pizza-item.css';
-import { connect } from 'react-redux';
-import {addPizza} from '../../actions';
+import QuantityCounter from '../quantity-counter/quantity-counter';
 
-const PizzaItem = ({ item, addPizza }) => {
+const PizzaItem = ({ item }) => {
   return (
     <div className="col-md-3 col-sm-12">
       <div className="card" >
         <img className="card-img-top" src="./assets/images/pizza_de_lado.jpg" alt="pizza" />
         <div className="card-body">
           <h5 className="card-title">
-            <span>{item.name}</span>  
-            <span className="price">{item.price} &euro;</span>  
+            <span>{item.name}</span>
+            <span className="price">{item.price} &euro;</span>
           </h5>
           <p className="card-text">{item.discription}</p>
-          <button className="btn btn-primary" onClick={() => addPizza(item)}> Add to cart</button>
+          <QuantityCounter item={item}/>
         </div>
       </div>
     </div>
   );
 }
 
-export default connect(
-  null, 
-  {addPizza}
-)(PizzaItem);
+export default PizzaItem;
+// export default connect(
+//   null,
+//   { addPizza }
+// )(PizzaItem);
