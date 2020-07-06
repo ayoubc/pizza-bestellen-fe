@@ -5,4 +5,4 @@ Pizza Ordering application
 
 ## Live Demo
 - Deployment on Heroku
-- [Live Demo](https://github.com/ayoubc/pizza-bestellen-fe)
+- [Live Demo](https://pizza-bestellen-fe.herokuapp.com/)
