@@ -70,7 +70,6 @@ class Form extends Component {
                 phone: this.state.phone,
                 email: this.state.email,
             };
-            // console.log(user);
             this.props.submit({customer: user, address: this.state.address});
             this.resetForm();
         }

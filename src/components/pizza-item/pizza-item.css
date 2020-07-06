@@ -29,3 +29,7 @@ button {
     display: flex;
     justify-content: center;
 }
+
+.card-img, .card-img-top{
+    height: 190px !important;
+}

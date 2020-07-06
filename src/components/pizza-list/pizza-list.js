@@ -14,14 +14,12 @@ const PizzaList = ({ page, loading, cart, inform }) => {
     const lowIndex = (page - 1) * MAX_ITEMS;
     const highIndex = page * MAX_ITEMS;
 
-
-
     useEffect(() => {
         loading(true);
         axios.get('/pizzas').then(response => {
             for (let item of response.data.items) {
                 for (let pizza of cart) {
-                    if (pizza.id === item.id) {
+                    if (item.id === pizza.id) {
                         item.quantity = pizza.quantity;
                     }
                 }
@@ -37,18 +35,25 @@ const PizzaList = ({ page, loading, cart, inform }) => {
                 message: "Network Error",
                 httpStatus: 500
             }, 0);
-            callToast(inform, null, 4);
         });
     }, [])
+
+    const getListPage = () => {
+        return pizzaList.slice(lowIndex, highIndex).map((item) => {
+            for (let pizza of cart) {
+                if (item.id === pizza.id) {
+                    item.quantity = pizza.quantity;
+                }
+            }
+            return <PizzaItem key={item.id} item={item} />
+        })
+    }
 
     return (
         <div className="container">
             <div className="items">
                 <div className="row">
-                    {pizzaList.slice(lowIndex, highIndex).map((item) => {
-                        return <PizzaItem key={item.id} item={item} />
-                    })}
-
+                    {getListPage()}
                 </div>
                 {pizzaList.length > 0 && <div className="paginator">
                     <Paginator max={numPages} />
@@ -62,11 +67,6 @@ const mapStateToProps = ({ cart, page }) => ({
     cart,
     page
 })
-
-// const mapDispatchToProps = dispatch => ({
-//     setPizzas: pizzas => dispatch(setPizzas(pizzas)),
-//     loading: (isLoading) => dispatch(loading(isLoading)),
-// });
 
 export default connect(
     mapStateToProps,

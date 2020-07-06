@@ -4,10 +4,10 @@ import { actions, findById } from '../utils';
 const paginationReducer = (page = 1, action) => {
     switch(action.type) {
         case actions.NEXT_PAGE:
-            return action.payload;
+            return action.payload + 1;
 
         case actions.PREV_PAGE:
-            return action.payload;
+            return action.payload - 1;
 
         default:
             return page;
@@ -15,7 +15,6 @@ const paginationReducer = (page = 1, action) => {
 }
 
 const toastReducer = (info = null, action) => {
-    // console.log(info);
     switch(action.type) {
         case actions.INFO:
             return action.payload;
@@ -35,7 +34,6 @@ const loadingReducer = (open = false, action) => {
 }
 
 const cartReducer = (cart = [], action) => {
-    // console.log(cart);
     let index;
     switch(action.type) {
         case actions.ADD_PIZZA:
@@ -61,6 +59,9 @@ const cartReducer = (cart = [], action) => {
                 return [...cart];
             }
 
+        case actions.EMPTY_CART:
+            return [];
+
         default:
             return cart;
     }
@@ -71,5 +72,4 @@ export default combineReducers({
     cart: cartReducer,
     loading: loadingReducer,
     toastInfo: toastReducer
-    // pizzas: pissazReducer,
 });

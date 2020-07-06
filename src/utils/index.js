@@ -4,8 +4,11 @@ export const actions = {
     PREV_PAGE: 'PREV_PAGE',
     ADD_PIZZA: 'ADD_PIZZA',
     REMOVE_PIZZA: 'REMOVE_PIZZA',
-    INFO: 'INFO'
+    INFO: 'INFO',
+    EMPTY_CART: 'EMPTY_CART'
 }
+
+const DELIVRY_COST = 5;
 
 export const callToast = (action, payload, delay) => {
     setTimeout(() => {
@@ -24,3 +27,4 @@ export const findById = (arr, item) => {
 
 
 export const getTotalPrice = (array) => array.map(item => item.price * item.quantity).reduce((a, b) => a + b);
+export const getDeliveryCost = () => DELIVRY_COST;

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import ShoppingCartItem from '../shopping-cart-item/shopping-cart-item';
 // import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { getTotalPrice } from '../../utils';
+import { getTotalPrice, getDeliveryCost } from '../../utils';
 
 const ShoppingCart = ({ cart }) => {
     // const history = useHistory();
@@ -45,12 +45,12 @@ const CartTotalPrice = ({ cart }) => {
     return (
         <div className="total-price">
             <span>Total Price: {getTotalPrice(cart)} &euro;</span>
+            <span>Delivery: {getDeliveryCost()} &euro;</span>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state.cart);
     return state;
 }
 

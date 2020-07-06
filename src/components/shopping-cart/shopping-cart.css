@@ -40,3 +40,7 @@
 .menu > a > button {
     text-transform: capitalize;
 }
+
+.total-price > span {
+    margin: 0 30px;
+}

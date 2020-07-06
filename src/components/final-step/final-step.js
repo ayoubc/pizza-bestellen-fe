@@ -3,34 +3,38 @@ import "./final-step.css";
 import { connect } from 'react-redux';
 import Form from '../form/form';
 import {useHistory} from 'react-router-dom';
-import { getTotalPrice } from '../../utils';
+import { getTotalPrice, getDeliveryCost } from '../../utils';
 import axios from "../../services";
-import { loading , inform} from '../../actions';
+import { loading , inform, emptyCart} from '../../actions';
 import { callToast } from '../../utils';
 
-const FinalStep = ({ cart, loading, inform }) => {
+const FinalStep = ({ cart, loading, inform, emptyCart }) => {
     const history = useHistory();
 
     useEffect( () => {
         if (cart.length === 0) {
             history.push('/menu');
         }
-    }, [])
+    }, [cart])
  
     const submitOrder = (order) => {
-        console.log(order);
-        order.items = cart;
-        order.totalPrice = getTotalPrice(cart);
-        // console.log(order);\
+        order.items = [...cart];
+
+        // we have to delete image because this proerty is to large for upload;
+        for(let item of order.items) {
+            if(item.image) delete item.image;
+        }
+        order.totalPrice = getTotalPrice(cart) + getDeliveryCost();
         loading(true);
         axios.post('/orders', order).then(response => {
-            // console.log(response);
             loading(false);
             callToast(inform, {
                 message: "Order saved successefully !",
                 httpStatus: 200
             }, 0);
-            // callToast(inform, null, 4);
+            setTimeout(() => {
+                emptyCart();
+            }, 5000)
         })
         .catch(error => {
             loading(false);
@@ -38,7 +42,6 @@ const FinalStep = ({ cart, loading, inform }) => {
                 message: "Network Error",
                 httpStatus: 500
             }, 0);
-            // callToast(inform, null, 4);
         })
     }
     return (
@@ -53,5 +56,5 @@ const mapStateToProps = ({cart}) => ({
 })
 export default connect(
     mapStateToProps,
-    { loading, inform }
+    { loading, inform, emptyCart }
 )(FinalStep);

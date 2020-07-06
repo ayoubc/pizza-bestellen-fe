@@ -1,4 +1,5 @@
 import { actions } from '../utils';
+
 export const loading = (isLoading) => {
     return {
         type: actions.LOADING,
@@ -41,12 +42,8 @@ export const removePizza = (pizza) => {
     }
 }
 
-/*
-export const setPizzas = (pizza) => {
+export const emptyCart = () => {
     return {
-        type: actions.REMOVE_PIZZA,
-        payload: pizza
+        type: actions.EMPTY_CART
     }
-}
-
-*/
+} 

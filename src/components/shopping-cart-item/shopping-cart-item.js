@@ -6,7 +6,7 @@ const ShoppingCartItem = ({ item }) => {
   return (
     <div className="row item-order">
       <div className="col-md-4 col-sm-12 display-center border-right">
-        <img className="pizza-img" src="./assets/images/pizza_de_lado.jpg" alt="pizza" />
+        <img className="pizza-img" src={item.image} alt="pizza" />
       </div>
       <div className="col-md-4 col-sm-12 border-right">
         <h5 className="card-title">

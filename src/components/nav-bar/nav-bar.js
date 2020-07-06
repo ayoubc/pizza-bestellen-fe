@@ -23,7 +23,6 @@ const NavBar = ({ cart }) => {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state.cart);
     return state;
 }
 export default connect(

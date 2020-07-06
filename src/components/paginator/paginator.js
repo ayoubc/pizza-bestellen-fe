@@ -26,14 +26,14 @@ const Paginator = ({ nextPage, prevPage, max }) => {
 
     const increament = () => {
         if (count < max) {
-            nextPage(count + 1);
+            nextPage(count);
             setCount(count + 1);
         }
     }
 
     const decreament = () => {
         if (count > 1) {
-            prevPage(count - 1);
+            prevPage(count);
             setCount(count - 1);
         }
     }

@@ -6,7 +6,7 @@ const PizzaItem = ({ item }) => {
   return (
     <div className="col-md-3 col-sm-12">
       <div className="card" >
-        <img className="card-img-top" src="./assets/images/pizza_de_lado.jpg" alt="pizza" />
+        <img className="card-img-top" src={item.image} alt="pizza" />
         <div className="card-body">
           <h5 className="card-title">
             <span>{item.name}</span>
