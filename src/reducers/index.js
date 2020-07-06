@@ -14,6 +14,16 @@ const paginationReducer = (page = 1, action) => {
     }
 }
 
+const toastReducer = (info = null, action) => {
+    // console.log(info);
+    switch(action.type) {
+        case actions.INFO:
+            return action.payload;
+        default:
+            return info;
+    }
+}
+
 const loadingReducer = (open = false, action) => {
     switch(action.type) {
         case actions.LOADING:
@@ -25,9 +35,11 @@ const loadingReducer = (open = false, action) => {
 }
 
 const cartReducer = (cart = [], action) => {
-    const index = findById(cart, action.payload);
+    // console.log(cart);
+    let index;
     switch(action.type) {
         case actions.ADD_PIZZA:
+            index = findById(cart, action.payload);
             if (index === -1) {
                 return [...cart, action.payload];
             }
@@ -37,6 +49,7 @@ const cartReducer = (cart = [], action) => {
             }
 
         case actions.REMOVE_PIZZA:
+            index = findById(cart, action.payload);
             if (index === -1) {
                 return cart;
             }
@@ -56,5 +69,7 @@ const cartReducer = (cart = [], action) => {
 export default combineReducers({
     page: paginationReducer,
     cart: cartReducer,
-    loading: loadingReducer
+    loading: loadingReducer,
+    toastInfo: toastReducer
+    // pizzas: pissazReducer,
 });

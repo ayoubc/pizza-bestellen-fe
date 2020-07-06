@@ -2,15 +2,16 @@ import React from 'react';
 import './shopping-cart.css';
 import { connect } from 'react-redux';
 import ShoppingCartItem from '../shopping-cart-item/shopping-cart-item';
-import Button from '@material-ui/core/Button';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { getTotalPrice } from '../../utils';
 
 const ShoppingCart = ({ cart }) => {
-    const history = useHistory();
+    // const history = useHistory();
 
-    const handleClick = () => {
-        history.push('/');
-    }
+    // const handleClick = () => {
+    //     history.push('/');
+    // }
     return (
         <div className="container list-container">
             {cart.length > 0 && <CartTotalPrice cart={cart} />}
@@ -19,9 +20,12 @@ const ShoppingCart = ({ cart }) => {
             })}
             {cart.length === 0 && <EmptyCart />}
             <div className="display-center menu">
-                <Button variant="contained" color="primary" onClick={handleClick}>
-                    Go to menu
-                </Button>
+                <Link to={'/'}>
+                    <button className="btn btn-primary col-sm-12"> go to menu </button>
+                </Link>
+                {cart.length > 0 && <Link to={'/finalise-order'}>
+                    <button className="btn btn-primary col-sm-12"> Order </button>
+                </Link>}
             </div>
         </div>
     )
@@ -37,16 +41,16 @@ const EmptyCart = () => {
     )
 }
 
-const CartTotalPrice = ({cart}) => {
+const CartTotalPrice = ({ cart }) => {
     return (
         <div className="total-price">
-            <span>Total Price: {cart.map(item => item.price * item.quantity).reduce((a,b) => a+b)} &euro;</span>
+            <span>Total Price: {getTotalPrice(cart)} &euro;</span>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.cart);
+    // console.log(state.cart);
     return state;
 }
 

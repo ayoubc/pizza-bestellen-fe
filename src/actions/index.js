@@ -6,6 +6,13 @@ export const loading = (isLoading) => {
     }
 }
 
+export const inform = (info) => {
+    return {
+        type: actions.INFO,
+        payload: info
+    }
+}
+
 export const nextPage = (page) => {
     return {
         type: actions.NEXT_PAGE,
@@ -34,4 +41,12 @@ export const removePizza = (pizza) => {
     }
 }
 
+/*
+export const setPizzas = (pizza) => {
+    return {
+        type: actions.REMOVE_PIZZA,
+        payload: pizza
+    }
+}
 
+*/

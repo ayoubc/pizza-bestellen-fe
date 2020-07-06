@@ -1,0 +1,14 @@
+.input-group-text {
+    width: 125px;
+}
+
+.input-container {
+    margin-bottom: 10px;
+}
+
+small {
+    color: red;
+    float: left;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
