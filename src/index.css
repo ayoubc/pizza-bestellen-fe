@@ -12,3 +12,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (max-width: 576px) {
+  .container {
+    padding-right: 60px !important;
+    padding-left: 60px !important;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  .border-right {
+    border-left: 1px solid #e8e8e8;
+  }
+}

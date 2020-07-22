@@ -4,7 +4,7 @@ import QuantityCounter from '../quantity-counter/quantity-counter';
 
 const PizzaItem = ({ item }) => {
   return (
-    <div className="col-md-3 col-sm-12">
+    <div className="col-md-3 col-sm-6">
       <div className="card" >
         <img className="card-img-top" src={item.image} alt="pizza" />
         <div className="card-body">

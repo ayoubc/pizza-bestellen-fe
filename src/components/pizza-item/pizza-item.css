@@ -23,13 +23,22 @@ button {
 
 .card-body{
     padding: 10px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .quantity-counter {
     display: flex;
     justify-content: center;
 }
-
+/* 
 .card-img, .card-img-top{
     height: 190px !important;
+} */
+.card {
+    height: 100%;
+}
+.col-md-3.col-sm-6 {
+    margin-bottom: 10px;
 }

@@ -80,14 +80,14 @@ class Form extends Component {
 
     render() {
         return (
-            <div className="col-md-8 offset-2">
+            <div className="col-md-8 col-sm-12 offset-md-2">
                 <div className="row"> 
                     <div className="col-md-6 col-sm-12">
                         <InputField
                             name="firstName"
                             label="First Name"
                             type="text"
-                            placeholder="Adam Smith"
+                            placeholder="Adam"
                             value={this.state.firstName}
                             error={this.state.errorMsg.firstName}
                             onChange={this.handleChange}
@@ -98,7 +98,7 @@ class Form extends Component {
                             name="lastName"
                             label="Last Name"
                             type="text"
-                            placeholder="Adam Smith"
+                            placeholder="Smith"
                             value={this.state.lastName}
                             error={this.state.errorMsg.lastName}
                             onChange={this.handleChange}
